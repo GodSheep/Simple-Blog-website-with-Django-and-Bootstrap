@@ -1,0 +1,47 @@
+{% block sidebar %}
+
+<style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+       
+</style>
+
+<!-- Sidebar Widgets Column -->
+<div class="col-md-4 float-right ">
+
+<div class="card my-4">
+        <h5 class="card-header">关于我</h5>
+    <div class="card-body">
+        <p class="card-text"> 这是一个叫GoodSheep的人自说自话的地方。</p>
+    </div>
+</div>
+
+<div class="card my-4">
+        <h5 class="card-header">最新文章</h5>
+    <div class="card-body">
+        {% for post in sidebar_post_list|slice:":5" %}
+        <p class="card-text">
+            <a href="{% url 'post_detail' id=post.id  %}"> {{post.title}} </a>
+        </p>
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="card my-4">
+        <h5 class="card-header">标签</h5>
+    <div class="card-body">
+        <p class="card-text"> 。</p>
+        {% for singletag in tags_list %}
+        <a href="{% url 'tag' ct_name=singletag %}"
+           class="btn btn-danger">{{ singletag }}
+       </a>
+       {% endfor %}
+    </div>
+</div>
+
+
+</div>
+
+{% endblock sidebar %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %}
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/code.css' %}">
+
+{% load custom_markdown %}
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
+        <p class=" text-muted">GoodSheep | {{ post.created_on|date:'Y-m-d H:i' }}</p>
+        <p class="card-text ">{{ post.content | safe }}</p>
+      </div>
+    </div>
+    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+  </div>
+</div>
+
+{% endblock content %}
